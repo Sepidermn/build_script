@@ -9,15 +9,13 @@ rm -rf device/xiaomi/sm6150-common
 rm -rf kernel/xiaomi/mojito
 rm -rf vendor/xiaomi/sm6150-common
 rm -rf hardware/xiaomi
+rm -rf frameworks/native
 
 # Initialize ROM manifest
 repo init -u https://github.com/2by2-Project/android.git -b 15 --git-lfs
 
 # Sync the repo with force to ensure a clean sync
 /opt/crave/resync.sh
-
-# remove frameworks native
-rm -rf frameworks/native
 
 # cloning device tree
 git clone https://github.com/Sepidermn/android_device_xiaomi_mojito.git --depth 1 -b 2by2 device/xiaomi/mojito
