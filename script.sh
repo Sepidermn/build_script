@@ -11,13 +11,13 @@ rm -rf vendor/xiaomi/sm6150-common
 rm -rf hardware/xiaomi
 
 # Initialize ROM manifest
-repo init -u https://github.com/2by2-Project/android.git -b 15 --git-lfs
+repo init -u https://github.com/Black-Iron-Project/manifest -b v15 --git-lfs
 
 # Sync the repo with force to ensure a clean sync
 /opt/crave/resync.sh
 
 # cloning device tree
-git clone https://github.com/Sepidermn/android_device_xiaomi_mojito.git --depth 1 -b 2by2 device/xiaomi/mojito
+git clone https://github.com/Sepidermn/android_device_xiaomi_mojito.git --depth 1 -b iron device/xiaomi/mojito
 git clone https://github.com/Sepidermn/android_device_xiaomi_sm6150-common.git --depth 1 -b ros device/xiaomi/sm6150-common
 
 # cloning kernel tree
@@ -34,4 +34,7 @@ git clone https://github.com/Sepidermn/android_hardware_xiaomi.git --depth 1 -b 
 . build/envsetup.sh
 
 # Choose the target device
-brunch mojito userdebug
+blkilunch mojito userdebug
+
+# Build the code
+blki b
