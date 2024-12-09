@@ -11,14 +11,14 @@ rm -rf vendor/xiaomi/sm6150-common
 rm -rf hardware/xiaomi
 
 # Initialize ROM manifest
-repo init -u https://github.com/ProjectPixelage/android_manifest.git -b 15 --git-lfs
+repo init --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest -b 15 -g default,-mips,-darwin,-notdefault
 
 # Sync the repo with force to ensure a clean sync
 /opt/crave/resync.sh
 
 # cloning device tree
-git clone https://github.com/Sepidermn/android_device_xiaomi_mojito.git --depth 1 -b pixelage device/xiaomi/mojito
-git clone https://github.com/Sepidermn/android_device_xiaomi_sm6150-common.git --depth 1 -b ros device/xiaomi/sm6150-common
+git clone https://github.com/Sepidermn/android_device_xiaomi_mojito.git --depth 1 -b infinity device/xiaomi/mojito
+git clone https://github.com/Sepidermn/android_device_xiaomi_sm6150-common.git --depth 1 -b testing device/xiaomi/sm6150-common
 
 # cloning kernel tree
 git clone https://github.com/Sepidermn/android_kernel_xiaomi_mojito.git --depth 1 -b inline-rom kernel/xiaomi/mojito
@@ -30,14 +30,11 @@ git clone https://gitlab.com/Sepidermn/android_vendor_xiaomi_sm6150-common.git -
 # cloning hardware tree
 git clone https://github.com/Sepidermn/android_hardware_xiaomi.git --depth 1 -b mojito hardware/xiaomi
 
-# Export your device codename
-export PIXELAGE_BUILD="mojito"
-
 # Set up th build environment
 . build/envsetup.sh
 
 # Choose the target device
-lunch pixelage_mojito-ap3a-userdebug
+lunch infinity_mojito-userdebug
 
 # Build the ROM (use mka bacon for a full build)
 mka bacon
