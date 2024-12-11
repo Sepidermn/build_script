@@ -16,6 +16,11 @@ repo init -u https://github.com/2by2-Project/android.git -b 15 --git-lfs
 # Sync the repo with force to ensure a clean sync
 /opt/crave/resync.sh
 
+# remove frameworks/av
+rm -rf frameworks/av
+# remove frameworks/base
+rm -rf frameworks/base
+
 # cloning device tree
 git clone https://github.com/Sepidermn/android_device_xiaomi_mojito.git --depth 1 -b 2by2 device/xiaomi/mojito
 git clone https://github.com/Sepidermn/android_device_xiaomi_sm6150-common.git --depth 1 -b ros device/xiaomi/sm6150-common
@@ -29,6 +34,10 @@ git clone https://gitlab.com/Sepidermn/android_vendor_xiaomi_sm6150-common.git -
 
 # cloning hardware tree
 git clone https://github.com/Sepidermn/android_hardware_xiaomi.git --depth 1 -b mojito hardware/xiaomi
+
+# add mood 
+git clone https://github.com/Sepidermn/android_frameworks_av.git --depth 1 -b 14 frameworks/av
+git clone https://github.com/Sepidermn/android_frameworks_base.git --depth 1 -b 15 frameworks/base
 
 # Set up th build environment
 . build/envsetup.sh
